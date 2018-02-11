@@ -9,8 +9,8 @@ import json
 import traceback
 
 class SourceReader(object):
-    def __init__(self):
-        self.data_source = "/source/customer_info_dataset.csv"
+    def __init__(self, data_source):
+        self.data_source = data_source
 
     def __del__(self):
         pass
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     time.sleep(2)
 
     #Receiver().receive_messages("fcr-it", "oliverpull")
-    all_lines = SourceReader().return_data()
+    all_lines = SourceReader("/source/TradeTransactions.csv").return_data()
     title = all_lines.pop(0)
     title_menu = title.split(",")
     for line in all_lines:
